@@ -21,13 +21,13 @@
         </header>
         <main>
             <div class="todo-input">
-                <input type="text" id="new-task" placeholder="Aggiungi una nuova attività...">
-                <button id="add-task-btn">Aggiungi</button>
+                <input v-model.trim="item" @keyup.enter="updateList" type="text" id="new-task" placeholder="Aggiungi una nuova attività...">
+                <button @click="updateList" id="add-task-btn">Aggiungi</button>
             </div>
             <ul class="todo-list">
                 <!-- Gli elementi della lista andranno qui -->
                  <li v-for="(task, index) in list" :key="index"><span class="task">{{ task }}</span>
-                 <button class="delete-btn">✕</button></li>
+                 <button @click="removeTask(index)" class="delete-btn">✕</button></li>
             </ul>
         </main>
         <footer>
